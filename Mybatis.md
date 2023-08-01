@@ -22,9 +22,9 @@ MyBatis下载地址：https://github.com/mybatis/mybatis-3
 
 [mybatis-3.5.10.zip](https://github.com/mybatis/mybatis-3/releases/download/mybatis-3.5.10/mybatis-3.5.10.zip)
 
-![image-20220908002858246](Mybatis.assets/image-20220908002858246.png)
+![image-20220908002858246](assets/Mybatis.assets/image-20220908002858246.png)
 
-![image-20220908002652757](Mybatis.assets/image-20220908002652757.png)
+![image-20220908002652757](assets/Mybatis.assets/image-20220908002652757.png)
 
 ## 4、和其它持久化层技术对比
 
@@ -142,7 +142,7 @@ MyBatis版本：MyBatis 3.5.10
 ```java
 public interface UserMapper {
 
-    \**
+    /**
     * 添加用户信息
     */
 
@@ -1396,11 +1396,11 @@ d&gt;查询的数据所转换的实体类类型必须实现序列化的接口
 
 ### d&gt;执行MBG插件的generate目标
 
-![image-20220908153234587](Mybatis.assets/image-20220908153234587.png)
+![image-20220908153234587](assets/Mybatis.assets/image-20220908153234587.png)
 
 效果：
 
-![image-20220908153300314](Mybatis.assets/image-20220908153300314.png)
+![image-20220908153300314](assets/Mybatis.assets/image-20220908153300314.png)
 
 ## 2、QBC查询
 

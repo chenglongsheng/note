@@ -10,7 +10,7 @@
 
 - 持久化的主要应用是将内存中的数据存储在关系型数据库中，当然也可以存储在磁盘文件、XML数据文件中。
 
-  ![1566741430592](JDBC核心技术.assets/1566741430592.png) 
+  ![1566741430592](assets/JDBC核心技术.assets/1566741430592.png) 
 
 ### 1.2 Java中的数据存储技术
 
@@ -29,20 +29,20 @@
 - JDBC的目标是使Java程序员使用JDBC可以连接任何**提供了JDBC驱动程序**的数据库系统，这样就使得程序员无需对特定的数据库系统的特点有过多的了解，从而大大简化和加快了开发过程。
 - 如果没有JDBC，那么Java程序访问数据库时是这样的：
 
-![1555575760234](JDBC核心技术.assets/1555575760234.png)
+![1555575760234](assets/JDBC核心技术.assets/1555575760234.png)
 
 ***
 
 - 有了JDBC，Java程序访问数据库时是这样的：
 
 
-![1555575981203](JDBC核心技术.assets/1555575981203.png)
+![1555575981203](assets/JDBC核心技术.assets/1555575981203.png)
 
 ***
 
 - 总结如下：
 
-![1566741692804](JDBC核心技术.assets/1566741692804.png)
+![1566741692804](assets/JDBC核心技术.assets/1566741692804.png)
 
 ### 1.4 JDBC体系结构
 
@@ -56,7 +56,7 @@
 
 ### 1.5 JDBC程序编写步骤
 
-![1565969323908](JDBC核心技术.assets/1565969323908.png)
+![1565969323908](assets/JDBC核心技术.assets/1565969323908.png)
 
 > 补充：ODBC(**Open Database Connectivity**，开放式数据库连接)，是微软在Windows平台下推出的。使用者在程序中只需要调用ODBC API，由 ODBC 驱动程序将调用转换成为对特定的数据库的调用请求。
 
@@ -72,21 +72,21 @@
   - Oracle的驱动：**oracle.jdbc.driver.OracleDriver**
   - mySql的驱动： **com.mysql.jdbc.Driver**
 
-![1555576157618](JDBC核心技术.assets/1555576157618.png)
+![1555576157618](assets/JDBC核心技术.assets/1555576157618.png)
 
-![1555576170074](JDBC核心技术.assets/1555576170074.png)
+![1555576170074](assets/JDBC核心技术.assets/1555576170074.png)
 
 - 将上述jar包拷贝到Java工程的一个目录中，习惯上新建一个lib文件夹。
 
- ![1566134718955](JDBC核心技术.assets/1566134718955.png)
+ ![1566134718955](assets/JDBC核心技术.assets/1566134718955.png)
 
 在驱动jar上右键-->Build Path-->Add to Build Path
 
- ![1566134781682](JDBC核心技术.assets/1566134781682.png)
+ ![1566134781682](assets/JDBC核心技术.assets/1566134781682.png)
 
 注意：如果是Dynamic Web Project（动态的web项目）话，则是把驱动jar放到WebContent（有的开发工具叫WebRoot）目录中的WEB-INF目录中的lib目录下即可
 
- ![1566135290460](JDBC核心技术.assets/1566135290460.png)
+ ![1566135290460](assets/JDBC核心技术.assets/1566135290460.png)
 
 #### 2.1.2 加载与注册JDBC驱动
 
@@ -100,7 +100,7 @@
 
   - 通常不用显式调用 DriverManager 类的 registerDriver() 方法来注册驱动程序类的实例，因为 Driver 接口的驱动程序类**都**包含了静态代码块，在这个静态代码块中，会调用 DriverManager.registerDriver() 方法来注册自身的一个实例。下图是MySQL的Driver实现类的源码：
 
-    ![1566136831283](JDBC核心技术.assets/1566136831283.png)
+    ![1566136831283](assets/JDBC核心技术.assets/1566136831283.png)
 
 ### 2.2 要素二：URL
 
@@ -115,7 +115,7 @@
 
 - 举例：
 
-  ![1555576477107](JDBC核心技术.assets/1555576477107.png)
+  ![1555576477107](assets/JDBC核心技术.assets/1555576477107.png)
 
 - **几种常用数据库的 JDBC URL**
 
@@ -331,7 +331,7 @@ driverClass=com.mysql.jdbc.Driver
   - PrepatedStatement：SQL 语句被预编译并存储在此对象中，可以使用此对象多次高效地执行该语句。
   - CallableStatement：用于执行 SQL 存储过程
 
-  ![1566573842140](JDBC核心技术.assets/1566573842140.png)
+  ![1566573842140](assets/JDBC核心技术.assets/1566573842140.png)
 
 ### 3.2 使用Statement操作数据表的弊端
 
@@ -627,7 +627,7 @@ public class StatementTest {
   - getString()
   - …
 
-  ![1555580152530](JDBC核心技术.assets/1555580152530.png)
+  ![1555580152530](assets/JDBC核心技术.assets/1555580152530.png)
 
 #### 3.4.2 ResultSetMetaData
 
@@ -644,7 +644,7 @@ public class StatementTest {
 
   - isAutoIncrement(int column)：指示是否自动为指定列进行编号，这样这些列仍然是只读的。 
 
-![1555579494691](JDBC核心技术.assets/1555579494691.png)
+![1555579494691](assets/JDBC核心技术.assets/1555579494691.png)
 
 **问题1：得到结果集后, 如何知道该结果集中有哪些列 ？ 列名是什么？**
 
@@ -656,7 +656,7 @@ public class StatementTest {
 2. **获取 ResultSet 中有多少列**：调用 ResultSetMetaData 的 getColumnCount() 方法
 3. **获取 ResultSet 每一列的列的别名是什么**：调用 ResultSetMetaData 的getColumnLabel() 方法
 
-![1555579816884](JDBC核心技术.assets/1555579816884.png)
+![1555579816884](assets/JDBC核心技术.assets/1555579816884.png)
 
 ### 3.5 资源的释放
 

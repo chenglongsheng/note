@@ -28,7 +28,7 @@ xxx.yyy.zzz
 HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
 ```
 
-![legacy-app-auth-5](JWT.assets/legacy-app-auth-5.png)
+![legacy-app-auth-5](assets/JWT.assets/legacy-app-auth-5.png)
 
 # 问题
 

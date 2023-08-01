@@ -2,7 +2,7 @@
 
 ## 树状目录结构
 
-![image-20220303100346942](F:/note/Linux.assets/image-20220303100346942.png)
+![image-20220303100346942](assets/Linux.assets/image-20220303100346942.png)
 
 ## 目录解释
 

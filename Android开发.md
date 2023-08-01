@@ -41,7 +41,7 @@ tv_hello.setTextSize(30);
 
 黑色线区域是可变区，其他是不可变区域，保证图片拉伸
 
-![image-20230731175350503](Android开发.assets/image-20230731175350503.png)
+![image-20230731175350503](assets/Android开发.assets/image-20230731175350503.png)
 
 # Fragment
 

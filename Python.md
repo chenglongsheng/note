@@ -26,7 +26,7 @@ Python 语言被吉多作为是ABC语言的一种继承，但坚决摒弃ABC语�
 
 python **的应用领域**
 
-![image-20220220001435504](F:/note/Python.assets/image-20220220001435504.png)
+![image-20220220001435504](assets/Python.assets/image-20220220001435504.png)
 
 
 
@@ -48,7 +48,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 [Python官网](https://www.python.org/)
 
-![image-20220219213836730](F:/note/Python.assets/image-20220219213836730.png)
+![image-20220219213836730](assets/Python.assets/image-20220219213836730.png)
 
 
 
@@ -94,17 +94,17 @@ https://plugins.zhile.io
 
 ## 2.2. 安装anaconda
 
-![image-20220220003921456](F:/note/Python.assets/image-20220220003921456.png)
+![image-20220220003921456](assets/Python.assets/image-20220220003921456.png)
 
-![image-20220220004007360](F:/note/Python.assets/image-20220220004007360.png)
+![image-20220220004007360](assets/Python.assets/image-20220220004007360.png)
 
-![image-20220220004029170](F:/note/Python.assets/image-20220220004029170.png)
+![image-20220220004029170](assets/Python.assets/image-20220220004029170.png)
 
-![image-20220220004108198](F:/note/Python.assets/image-20220220004108198.png)
+![image-20220220004108198](assets/Python.assets/image-20220220004108198.png)
 
-![image-20220220004213576](F:/note/Python.assets/image-20220220004213576.png)
+![image-20220220004213576](assets/Python.assets/image-20220220004213576.png)
 
-![image-20220220004516857](F:/note/Python.assets/image-20220220004516857.png)
+![image-20220220004516857](assets/Python.assets/image-20220220004516857.png)
 
 
 
@@ -116,7 +116,7 @@ https://plugins.zhile.io
 
 
 
-![image-20220220005225258](F:/note/Python.assets/image-20220220005225258.png)
+![image-20220220005225258](assets/Python.assets/image-20220220005225258.png)
 
 
 
@@ -142,7 +142,7 @@ https://plugins.zhile.io
 
 输入`python`，出现以下画面，**安装成功**
 
-![image-20220220005656486](F:/note/Python.assets/image-20220220005656486.png)
+![image-20220220005656486](assets/Python.assets/image-20220220005656486.png)
 
 
 
@@ -172,7 +172,7 @@ conda config --show channels
 
 
 
-![image-20220220010444377](F:/note/Python.assets/image-20220220010444377.png)
+![image-20220220010444377](assets/Python.assets/image-20220220010444377.png)
 
 
 
@@ -261,7 +261,7 @@ var = input("请输入：")
 
   表示的字符串内容是：
 
-  ![image-20220222205043358](F:/note/Python.assets/image-20220222205043358.png)
+  ![image-20220222205043358](assets/Python.assets/image-20220222205043358.png)
 
   转义字符`\`可以转义很多字符，比如`\n`表示换行，`\t`表示制表符，字符`\`本身也要转义，所以`\\`表示的字符就是`\`，可以在Python的交互式命令行用`print()`打印字符串看看：
 
@@ -5392,7 +5392,7 @@ s.close()
 
 **TCP 客户端和服务器的通信模型**
 
-![TCP客户端和服务器的通信模型](Python.assets/TCP客户端和服务器的通信模型.png)
+![TCP客户端和服务器的通信模型](assets/Python.assets/TCP客户端和服务器的通信模型.png)
 
 
 
@@ -5555,7 +5555,7 @@ s.close()
 
 **UDP 客户端和服务器的通信模型**
 
-![UDP客户端和服务器的通信模型](Python.assets/UDP客户端和服务器的通信模型.png)
+![UDP客户端和服务器的通信模型](assets/Python.assets/UDP客户端和服务器的通信模型.png)
 
 
 
@@ -5613,7 +5613,7 @@ s.close()
 2. 数据解析：对 HTTP 响应的原始数据进行分析、清洗，以提取出所需要的数据；
 3. 数据入库：将数据进一步保存到数据库（或文本文件）中，用于构建知识库。
 
-![基本操作流程](Python.assets/基本操作流程.png)
+![基本操作流程](assets/Python.assets/基本操作流程.png)
 
 Python 提供了许多与网络爬虫相关的库。其中，在数据抓取方面包括 urllib2 (urllib3)，requests，mechanize，selenium，splinter 等；在数据解析方面包括 re（正则表达式），Beautifulsoup4， pyquery 等。本章将详细介绍其中最重要且最主流的 3个函数库：requests，re（正则表达式）和 beautifulsoup4。
 
@@ -5686,7 +5686,7 @@ import requests
    print(r.url)
    ```
 
-   ![](Python.assets/image-20220514151120612.png)
+   ![](assets/Python.assets/image-20220514151120612.png)
 
    通过打印输出该 URL，可以看到 URL 已被正确编码，用浏览器打开被编码的 URL得到百度搜索关键字“Python”的结果。
 
@@ -5994,7 +5994,7 @@ soup = BeautifulSoup(text, 'lxml')
 
 网页分析
 
-![image-20220519111011824](Python.assets/image-20220519111011824.png)
+![image-20220519111011824](assets/Python.assets/image-20220519111011824.png)
 
 获取<div class="item"> 下的 <div class="pic"> 下的 <a>之下所有的<img>
 
@@ -6007,7 +6007,7 @@ for tag in pics:
     print(tag.find('img').attrs['alt'])
 ```
 
-![image-20220519111853913](Python.assets/image-20220519111853913.png)
+![image-20220519111853913](assets/Python.assets/image-20220519111853913.png)
 
 将文件保存到本地，通过`os.path`模块下的分割扩展名方法获取资源的后缀名
 
