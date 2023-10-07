@@ -1234,6 +1234,71 @@ A 只能访问 B，B 能访问 C 和 D
 
 
 
+# 网络
+
+## 文档
+
+[Google官方文档](https://developer.android.com/training/basics/network-ops/connecting?hl=zh-cn)
+
+## 使用
+
+使用网络必须添加的权限，都是*普通权限*
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+```
+
+## 检查网络状态
+
+使用`ConnectivityManager`
+
+## NetworkCapabilities 和 LinkProperties
+
+`NetworkCapabilities` 和 `LinkProperties` 对象可以提供系统了解的关于某个网络的所有属性。
+
+`LinkProperties` 对象可以提供关于路由、链接地址、接口名称、代理信息（如有）和 DNS 服务器的信息。针对 `LinkProperties` 对象调用相关方法可以检索所需信息。
+
+`NetworkCapabilities` 对象封装了有关网络传输及其功能的信息。
+
+传输是网络运行的物理媒介的抽象形式。常见的传输示例包括以太网、Wi-Fi 和移动网络。VPN 和点对点 Wi-Fi 也可以传输。在 Android 上，一个网络可以同时拥有多个传输。例如，通过 Wi-Fi 和移动网络运行的 VPN。VPN 支持 Wi-Fi、移动网络和 VPN 传输。若要查找某个网络是否具有特定的传输，请使用 [`NetworkCapabilities.hasTransport(int)`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#hasTransport(int)) 方法和其中一个 `NetworkCapabilities.TRANSPORT_*` 常量。
+
+功能描述了网络的属性。示例功能包括 `MMS`、`NOT_METERED` 和 `INTERNET`。具有 MMS 功能的网络可以收发彩信消息，不具有此功能的网络则不能。具有 `NOT_METERED` 功能的网络不会向用户收取流量费用。您的应用可以使用 [`NetworkCapabilities.hasCapability(int)`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#hasCapability(int)) 和其中一个 `NetworkCapabilities.NET_CAPABILITY_*` 常量来检查功能是否恰当。
+
+最实用的 `NET_CAPABILITY_*` 常量包括：
+
+- [`NET_CAPABILITY_INTERNET`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#NET_CAPABILITY_INTERNET)：表示网络设置为访问互联网。这只是设置，而不是实际能够到达公共服务器。例如，网络可以设置为访问互联网，但受到强制门户的限制。
+
+  运营商的移动网络通常具有 `INTERNET` 功能，而本地点对点 Wi-Fi 网络通常没有。如需了解实际连接，请参阅 `NET_CAPABILITY_VALIDATED`。
+
+- [`NET_CAPABILITY_NOT_METERED`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#NET_CAPABILITY_NOT_METERED)：表示网络不按流量计费。当用户由于资金、流量限制或电池性能问题而对严重流量消耗敏感时，可将网络归类为按流量计费的网络。
+
+- [`NET_CAPABILITY_NOT_VPN`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#NET_CAPABILITY_NOT_VPN)：表示网络不是虚拟专用网。
+
+- [`NET_CAPABILITY_VALIDATED`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#NET_CAPABILITY_VALIDATED)：表示在系统探测网络时网络提供对公共互联网的实际访问。通过强制门户接入的网络或不提供域名解析的网络则不具备此功能。这是系统关于实际提供访问的网络所能知道的最接近真实情况的信息，尽管通过验证的网络原则上仍需要经过基于 IP 的过滤，或者由于信号差等问题而导致连接突然中断。
+
+- [`NET_CAPABILITY_CAPTIVE_PORTAL`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#NET_CAPABILITY_CAPTIVE_PORTAL)：表示在系统探测网络时网络具有强制门户。
+
+还存在更多专用应用可能感兴趣的其他功能。如需了解详情，请参阅 [`NetworkCapabilities.hasCapability(int)`](https://developer.android.com/reference/android/net/NetworkCapabilities?hl=zh-cn#hasCapability(int)) 中的参数定义。
+
+网络的功能可能随时发生变化。当系统检测到强制门户时，它会显示一条邀请用户登录的通知。在此过程中，网络具有 `NET_CAPABILITY_INTERNET` 和 `NET_CAPABILITY_CAPTIVE_PORTAL` 功能，但不具有 `NET_CAPABILITY_VALIDATED` 功能。
+
+用户执行操作并登录到强制门户页面后，设备将能够访问公共互联网，并且网络将获得 `NET_CAPABILITY_VALIDATED` 功能而失去 `NET_CAPABILITY_CAPTIVE_PORTAL` 功能。
+
+同样，网络的传输可能动态变化。例如，VPN 可以自行重新配置，以使用刚刚出现的速度更快的网络，比如针对底层网络将移动网络切换为 Wi-Fi。在这种情况下，网络会失去 `TRANSPORT_CELLULAR` 传输而获得 `TRANSPORT_WIFI` 传输，同时保留 `TRANSPORT_VPN` 传输。
+
+## 网络请求
+
+使用HTTP客户端
+
+- HttpsURLConnection
+- Retrofit
+- Ktor
+
+
+
+
+
 # okHttp
 
 官网地址https://square.github.io/okhttp/
