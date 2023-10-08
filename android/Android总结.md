@@ -1301,11 +1301,39 @@ A 只能访问 B，B 能访问 C 和 D
 
 # okHttp
 
+## 原理说明
+
 官网地址https://square.github.io/okhttp/
 
-其内部实现为责任链模式
 
-## 例子
+
+OkHttpClient由建造者模式创建Client，newCall函数作为整个的入口新建会话传入Request参数。
+
+```kotlin
+/** Prepares the [request] to be executed at some point in the future. */
+override fun newCall(request: Request): Call = RealCall(this, request, forWebSocket = false)
+```
+
+
+
+由RealCall实现的execute和enqueue函数中交由dispatcher去执行整个网络请求链路
+
+
+
+其内部实现为责任链模式，在`RealCall`的`getResponseWithInterceptorChain()`函数中构建构建一个完整的拦截器堆栈后，由`RealInterceptorChain`中的`proceed()`函数执行该链中的每一个拦截器
+
+```kotlin
+// Call the next interceptor in the chain.
+val next = copy(index = index + 1, request = request)
+val interceptor = interceptors[index]
+
+@Suppress("USELESS_ELVIS")
+val response = interceptor.intercept(next) ?: throw NullPointerException("interceptor $interceptor returned null")
+```
+
+
+
+## 使用例子
 
 ### 同步GET
 
@@ -1680,6 +1708,10 @@ val response = interceptor.intercept(next) ?: throw NullPointerException(
 
 
 
+# Retrofit
+
+
+
 # RxJava
 
 内置线程选项，例如：
@@ -1838,11 +1870,47 @@ public class MainFragment {
 
 # 设计模式
 
-入口简单
+
 
 ## 责任链模式
 
-okHttp
+为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。
+
+例如okhttp中实现
+
+```java
+public interface Intercepter {
+    Response intercept(Chain chain) throws IOException;
+    
+    interface Chain {
+        Request request();
+
+    Response proceed(Request request) throws IOException;
+
+    /**
+     * Returns the connection the request will be executed on. This is only available in the chains
+     * of network interceptors; for application interceptors this is always null.
+     */
+    @Nullable Connection connection();
+
+    Call call();
+
+    int connectTimeoutMillis();
+
+    Chain withConnectTimeout(int timeout, TimeUnit unit);
+
+    int readTimeoutMillis();
+
+    Chain withReadTimeout(int timeout, TimeUnit unit);
+
+    int writeTimeoutMillis();
+
+    Chain withWriteTimeout(int timeout, TimeUnit unit);
+    }
+}
+```
+
+
 
 
 
